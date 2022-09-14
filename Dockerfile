@@ -116,9 +116,13 @@ ENV PROVAR_HOME=${REPO_HOME}/Provar_ANT_${PROVAR_VERSION} \
 # Copy Licenses folder to container for execution tracking
 COPY .licenses/ ${PROVAR_HOME}/.licenses 
 COPY .smtp/ ${PROVAR_HOME}/.smtp
+#COPY Post execution script
+COPY postexecution.sh .
 ## Set working directory for image
 WORKDIR ${WORKSPACE}
 ## Entrypoint script to run Provar tests
 RUN echo "#!/bin/sh \n xvfb-run ant -f ANT/$BUILD_FILE" > ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
+RUN chmod +x ./postexecution.sh
+ENTRYPOINT ["./postexecution.sh"]
