@@ -97,7 +97,7 @@ RUN set -ex \
     ## install azcopy for moving results to Azure storage
     && wget https://aka.ms/downloadazcopy-v10-linux \
     && tar -xvf downloadazcopy-v10-linux \
-    && sudo cp ./azcopy_linux_amd64_*/azcopy /usr/bin/ \
+    && cp ./azcopy_linux_amd64_*/azcopy /usr/bin/ \
     && ant -version \
     && javac -version \
     && git clone -b ${GIT_REPO_BRANCH} --single-branch https://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@github.com/shangitdocker/${GIT_REPO}.git/ ${WORKSPACE} \
