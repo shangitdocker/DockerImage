@@ -131,6 +131,6 @@ WORKDIR ${WORKSPACE}
 RUN echo "#!/bin/sh \n xvfb-run ant -f ANT/$BUILD_FILE" > ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
-RUN chmod +x ./postscript.sh
-ENTRYPOINT ["./postscript.sh", "/home/ProvarProject/ANT/Results", "$AZURE_STRG_URL"]
+##RUN chmod +x ./postscript.sh
+##ENTRYPOINT ["./postscript.sh", "/home/ProvarProject/ANT/Results", "$AZURE_STRG_URL"]
 ##RUN ./postscript.sh /home/ProvarProject/ANT/Results $AZURE_STRG_URL
