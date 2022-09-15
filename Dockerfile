@@ -129,6 +129,6 @@ RUN echo "#!/bin/sh \n xvfb-run ant -f ANT/$BUILD_FILE" > ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
 RUN echo "PWD is: $PWD"
-RUN echo "LS is: $ls"
+RUN ls
 RUN chmod +x ./postscript.sh
 ENTRYPOINT ["./postscript.sh"]
