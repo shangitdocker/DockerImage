@@ -94,6 +94,9 @@ RUN set -ex \
     && wget -qP ${REPO_HOME} https://download.provartesting.com/${PROVAR_MAJOR_VERSION}/Provar_ANT_${PROVAR_DEFAULT_VERSION}.zip \
     && unzip ${REPO_HOME}/Provar_ANT_${PROVAR_DEFAULT_VERSION}.zip -d ${REPO_HOME}/Provar_ANT_${PROVAR_DEFAULT_VERSION} \
     && rm -rf ${REPO_HOME}/Provar_ANT_${PROVAR_DEFAULT_VERSION}.zip \
+    && wget https://aka.ms/downloadazcopy-v10-linux \
+    && tar -xvf downloadazcopy-v10-linux \
+    && sudo cp ./azcopy_linux_amd64_*/azcopy /usr/bin/
     && ant -version \
     && javac -version \
     && git clone -b ${GIT_REPO_BRANCH} --single-branch https://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@github.com/shangitdocker/${GIT_REPO}.git/ ${WORKSPACE} \
@@ -117,7 +120,7 @@ ENV PROVAR_HOME=${REPO_HOME}/Provar_ANT_${PROVAR_VERSION} \
 COPY .licenses/ ${PROVAR_HOME}/.licenses 
 COPY .smtp/ ${PROVAR_HOME}/.smtp
 #COPY Post execution script
-#COPY postexecution.sh .
+#COPY postscript.sh .
 ## Set working directory for image
 WORKDIR ${WORKSPACE}
 ## Entrypoint script to run Provar tests
