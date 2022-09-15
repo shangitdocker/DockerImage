@@ -44,6 +44,8 @@ ARG PROVAR_sf_Admin_password
 ARG GIT_REPO=Salescloud
 ##REPO BRANCH NAME
 ARG GIT_REPO_BRANCH=main
+## Azure Storage URL
+ARG AZURE_STRG_URL
 ## This docker build assumes you run as root (-u root)
 ## Initial stage to use base image with ANT and Oracle JDK 8
 FROM frekele/ant:1.10.3-jdk8
@@ -62,6 +64,7 @@ ARG PROVAR_sf_Admin
 ARG PROVAR_sf_Admin_password
 ARG GIT_REPO
 ARG GIT_REPO_BRANCH
+ARG AZURE_STRG_URL
 # The location to save the Provar binaries to (from downloads page)
 ENV REPO_HOME=/srv/Provar \
     PROVAR_VERSION=${PROVAR_DEFAULT_VERSION} \
@@ -132,4 +135,4 @@ RUN echo "PWD is: $PWD"
 RUN ls
 RUN chmod +x ./postscript.sh
 ##ENTRYPOINT ["./postscript.sh"]
-RUN ./postscript.sh
+RUN ./postscript.sh /home/ProvarProject/ANT/Results $AZURE_STRG_URL
