@@ -130,5 +130,5 @@ RUN chmod +x ./entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
 RUN echo "PWD is: $PWD"
 RUN ls
-RUN chmod +x ./postscript.sh
-ENTRYPOINT ["./postscript.sh"]
+##RUN chmod +x ./postscript.sh
+##ENTRYPOINT ["./postscript.sh"]
