@@ -128,7 +128,7 @@ COPY .smtp/ ${PROVAR_HOME}/.smtp
 ## Set working directory for image
 WORKDIR ${WORKSPACE}
 ## Entrypoint script to run Provar tests
-RUN echo "#!/bin/sh \n xvfb-run ant -f ANT/$BUILD_FILE \n sh ./postscript.sh /home/ProvarProject/ANT/Results $AZURE_STRG_URL" > ./entrypoint.sh
+RUN echo "#!/bin/sh \n xvfb-run ant -f ANT/$BUILD_FILE \n sh ./postscript.sh /home/ProvarProject/ANT/Results \"$AZURE_STRG_URL\" " > ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
 RUN chmod +x ./postscript.sh
